@@ -22,6 +22,18 @@ module.exports = {
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /\.(ttf)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              outputPath: "./",
+              publicPath: "./",
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
@@ -30,15 +42,9 @@ module.exports = {
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
-    // headers: { "Access-Control-Allow-Origin": "*" },
-    // historyApiFallback: true,
-    // contentBase: path.join(__dirname, "public/"),
-    // port: 3000,
-    // publicPath: "http://localhost:3000/public/",
-    // hotOnly: true,
     contentBase: path.join(__dirname, "public/"),
     port: 3000,
-    publicPath: "http://localhost:3000/",
+    publicPath: "/",
     hotOnly: true,
   },
 };

@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { ResultsSection, ResultsHeading, ResultItem } from "./Results.layout";
+
 const currencyFormatter = new Intl.NumberFormat("en-CA", {
   style: "currency",
   currency: "CAD",
@@ -18,7 +20,6 @@ const Results = ({ grossIncome, calculatedTaxes, handleBack }) => {
     calculatedTaxes / grossIncome
   );
 
-
   whats left?
 
   figure out why number is being coerced to string for calculating taxes
@@ -27,13 +28,15 @@ const Results = ({ grossIncome, calculatedTaxes, handleBack }) => {
   re-read intro to make sure you have everything
 
   return (
-    <section>
-      <h2>Your gross income:</h2>
-      <p>{formattedGross}</p>
-      <h2>Your federal tax payment for 2019:</h2>
-      <p>{formattedTaxes}</p>
-      <h2>Effective tax rate:</h2>
-      <p>{effectiveTaxRate}</p>
+    <ResultsSection>
+      <ResultsHeading>Your gross income:</ResultsHeading>
+      <ResultItem>{formattedGross}</ResultItem>
+
+      <ResultsHeading>Your federal tax payment for 2019:</ResultsHeading>
+      <ResultItem>{formattedTaxes}</ResultItem>
+
+      <ResultsHeading>Effective tax rate:</ResultsHeading>
+      <ResultItem>{effectiveTaxRate}</ResultItem>
 
       <aside>
         <h3>About Federal Tax Rates For 2019</h3>
@@ -58,7 +61,7 @@ const Results = ({ grossIncome, calculatedTaxes, handleBack }) => {
       <button type="button" onClick={handleBack}>
         Enter a new gross income
       </button>
-    </section>
+    </ResultsSection>
   );
 };
 
