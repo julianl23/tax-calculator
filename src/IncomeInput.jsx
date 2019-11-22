@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
+import {
+  StyledSection,
+  StyledForm,
+  StyledLabel,
+  StyledInput,
+} from "./IncomeInput.layout";
+import Button from "./Button";
+
 const IncomeInput = ({ handleFormSubmit }) => {
   const [grossIncome, setGrossIncome] = useState(0);
 
@@ -15,17 +23,19 @@ const IncomeInput = ({ handleFormSubmit }) => {
   };
 
   return (
-    <form action="/" method="POST" onSubmit={onFormSubmit}>
-      <label htmlFor="gross">Gross Income</label>
-      <input
-        type="number"
-        id="gross"
-        name="gross"
-        value={grossIncome}
-        onChange={handleChange}
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <StyledSection>
+      <StyledForm action="/" method="POST" onSubmit={onFormSubmit}>
+        <StyledLabel htmlFor="gross">Gross Income</StyledLabel>
+        <StyledInput
+          type="number"
+          id="gross"
+          name="gross"
+          value={grossIncome}
+          onChange={handleChange}
+        />
+        <Button type="submit">Submit</Button>
+      </StyledForm>
+    </StyledSection>
   );
 };
 

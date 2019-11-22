@@ -1,7 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { ResultsSection, ResultsHeading, ResultItem } from "./Results.layout";
+import {
+  ResultsSection,
+  ResultsHeading,
+  ResultItem,
+  TaxRateAside,
+  AsideHeading,
+  BackButton,
+  TaxResults,
+  AsideList,
+} from "./Results.layout";
 
 const currencyFormatter = new Intl.NumberFormat("en-CA", {
   style: "currency",
@@ -20,28 +29,30 @@ const Results = ({ grossIncome, calculatedTaxes, handleBack }) => {
     calculatedTaxes / grossIncome
   );
 
-  whats left?
+  // whats left?
 
-  figure out why number is being coerced to string for calculating taxes
-  style everything
-  tests
-  re-read intro to make sure you have everything
+  // figure out why number is being coerced to string for calculating taxes
+  // tests
+  // Take another pass on calculateFederalTax, see if you can cleann it up
+  // re-read intro to make sure you have everything
 
   return (
     <ResultsSection>
-      <ResultsHeading>Your gross income:</ResultsHeading>
-      <ResultItem>{formattedGross}</ResultItem>
+      <TaxResults>
+        <ResultsHeading>Your gross income:</ResultsHeading>
+        <ResultItem>{formattedGross}</ResultItem>
 
-      <ResultsHeading>Your federal tax payment for 2019:</ResultsHeading>
-      <ResultItem>{formattedTaxes}</ResultItem>
+        <ResultsHeading>Your federal tax payment for 2019:</ResultsHeading>
+        <ResultItem>{formattedTaxes}</ResultItem>
 
-      <ResultsHeading>Effective tax rate:</ResultsHeading>
-      <ResultItem>{effectiveTaxRate}</ResultItem>
+        <ResultsHeading>Effective tax rate:</ResultsHeading>
+        <ResultItem>{effectiveTaxRate}</ResultItem>
+      </TaxResults>
 
-      <aside>
-        <h3>About Federal Tax Rates For 2019</h3>
+      <TaxRateAside>
+        <AsideHeading>About Federal Tax Rates For 2019</AsideHeading>
         <p>Canadian federal tax rates for 2019 are calculated as follows:</p>
-        <ul>
+        <AsideList>
           <li>15% on the first $47,630 of taxable income, plus</li>
           <li>
             20.5% on the next $47,629 of taxable income (on the portion of
@@ -56,11 +67,11 @@ const Results = ({ grossIncome, calculatedTaxes, handleBack }) => {
             income over 147,667 up to $210,371), plus
           </li>
           <li>33% of taxable income over $210,371</li>
-        </ul>
-      </aside>
-      <button type="button" onClick={handleBack}>
+        </AsideList>
+      </TaxRateAside>
+      <BackButton type="button" onClick={handleBack}>
         Enter a new gross income
-      </button>
+      </BackButton>
     </ResultsSection>
   );
 };

@@ -26,16 +26,14 @@ const App = () => {
     <>
       <GlobalStyle />
       <Navbar />
-      <section>
-        {!displayResults && <IncomeInput handleFormSubmit={handleFormSubmit} />}
-        {displayResults && (
-          <Results
-            calculatedTaxes={calculatedTaxes}
-            grossIncome={grossIncome}
-            handleBack={handleBack}
-          />
-        )}
-      </section>
+      {!displayResults && <IncomeInput handleFormSubmit={handleFormSubmit} />}
+      {displayResults && (
+        <Results
+          calculatedTaxes={calculatedTaxes}
+          grossIncome={grossIncome}
+          handleBack={handleBack}
+        />
+      )}
     </>
   );
 };
