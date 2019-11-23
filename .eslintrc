@@ -28,6 +28,7 @@
     "jsx-a11y/label-has-associated-control": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "operator-assignment": ["error", "never"]
+    "operator-assignment": ["error", "never"],
+    "react/jsx-props-no-spreading": "off"
   }
 }

@@ -29,13 +29,6 @@ const Results = ({ grossIncome, calculatedTaxes, handleBack }) => {
     calculatedTaxes / grossIncome
   );
 
-  // whats left?
-
-  // figure out why number is being coerced to string for calculating taxes
-  // tests
-  // Take another pass on calculateFederalTax, see if you can cleann it up
-  // re-read intro to make sure you have everything
-
   return (
     <ResultsSection>
       <TaxResults>

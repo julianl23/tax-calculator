@@ -52,13 +52,16 @@ const calculateTaxAmount = ({
   previousTaxAmount,
   taxBracket,
 }) => {
-  const totalTaxAmount =
-    (grossIncome - baseAmount) * taxBracket + previousTaxAmount;
-  return totalTaxAmount.toFixed(2);
+  return (grossIncome - baseAmount) * taxBracket + previousTaxAmount;
 };
 
 const calculateFederalTax = income => {
   const grossIncome = parseInt(income, 10);
+
+  if (Number.isNaN(grossIncome)) {
+    throw new Error("Passed income is not a number");
+  }
+
   let userTaxBracketIndex = null;
 
   if (grossIncome <= 47360) {
@@ -78,8 +81,8 @@ const calculateFederalTax = income => {
     ...taxBrackets[userTaxBracketIndex],
   });
 
-  // TODO: Why does this come back as a string?
-  return taxAmount;
+  // Coerce the return value to a number type with two decimal points
+  return +taxAmount.toFixed(2);
 };
 
 export default calculateFederalTax;

@@ -10,11 +10,11 @@ import {
 import Button from "./Button";
 
 const IncomeInput = ({ handleFormSubmit }) => {
-  const [grossIncome, setGrossIncome] = useState(0);
+  const [grossIncome, setGrossIncome] = useState("");
 
   const handleChange = e => {
     const { value } = e.target;
-    setGrossIncome(value);
+    setGrossIncome(value ? parseFloat(value) : "");
   };
 
   const onFormSubmit = e => {
@@ -32,6 +32,7 @@ const IncomeInput = ({ handleFormSubmit }) => {
           name="gross"
           value={grossIncome}
           onChange={handleChange}
+          maxlength="15"
         />
         <Button type="submit">Submit</Button>
       </StyledForm>
